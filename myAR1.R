@@ -1,6 +1,8 @@
 # Presentation to Guide
 dataar1 = read.csv("dar1.csv")
 str(dataar1)
+?write.csv
+write.csv(dataar1,file='dar1w.csv',row.names = F)
 dataar1 = dataar1[-7]
 library(arules)
 str(dataar1)
@@ -34,3 +36,10 @@ plot(rules)
 plot.new()
 plot(rules,method='graph',control=list(type='items'))
 plot(rules,method='paracoord',control=list(reorder=T))
+
+# Using Weka Library ####
+#Using Weka 
+library(RWeka)
+library(rattle)
+rattle()
+Apriori()
