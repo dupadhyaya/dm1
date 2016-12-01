@@ -2,9 +2,10 @@
 #http://www.rdatamining.com/examples/association-rules
 str(titanic.raw)
 
-write.csv(titanic.raw,file="titanic.csv")
+#write.csv(titanic.raw,file="titanic.csv")
+load('titanic.raw.rdata')
 library(arules)
-
+str(titanic.raw)
 # Find Association Rules with Default Settings
 rules = apriori(titanic.raw)
 inspect(rules)
