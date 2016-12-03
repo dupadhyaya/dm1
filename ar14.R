@@ -49,3 +49,4 @@ rules.sorted = sort(rules, by="lift")
 inspect(rules.sorted)
 quality(rules.sorted)
 head(inspect(rules.sorted))
+
