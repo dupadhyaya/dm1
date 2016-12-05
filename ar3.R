@@ -25,6 +25,7 @@ library(datasets)
 data(Groceries)
 str(Groceries)
 head(Groceries)
+inspect(Groceries)
 # Create an item frequency plot for the top 20 items
 itemFrequencyPlot(Groceries,topN=20,type="absolute")
 #set the min support to 0.001 , minimum conf of 0.8 ; show top 5 rules

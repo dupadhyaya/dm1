@@ -44,6 +44,7 @@ head(edndata14b)
 # Custom Rules result = 'Poor'
 arules14b = apriori(edndata14b, parameter = list(minlen=2,supp=.005,conf=0.8),
                 list(rhs=c('result=Poor'),default="lhs"), control=list(verbose=F))
+<<<<<<< HEAD
 arules14b.sorted = sort(arules14b, by="lift")
 inspect(arules14b.sorted)
 quality(arules14b.sorted)
@@ -59,3 +60,10 @@ plot(arules14b)
 plot(arules14b, method="graph", control=list(type="items"))
 
 plot(arules14b, method="paracoord", control=list(reorder=TRUE))
+=======
+rules.sorted = sort(rules, by="lift")
+inspect(rules.sorted)
+quality(rules.sorted)
+head(inspect(rules.sorted))
+
+>>>>>>> 0b50577bb0f052107564367a2845372e98756506
