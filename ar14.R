@@ -41,11 +41,21 @@ str(edndata14b)
 rules14b = apriori(edndata14b)
 inspect(rules14b)
 head(edndata14b)
-# Custom Rules
-res = 'Poor'
-rules = apriori(edndata14b, parameter = list(minlen=2,supp=.005,conf=0.8),
+# Custom Rules result = 'Poor'
+arules14b = apriori(edndata14b, parameter = list(minlen=2,supp=.005,conf=0.8),
                 list(rhs=c('result=Poor'),default="lhs"), control=list(verbose=F))
-rules.sorted = sort(rules, by="lift")
-inspect(rules.sorted)
-quality(rules.sorted)
-head(inspect(rules.sorted))
+arules14b.sorted = sort(arules14b, by="lift")
+inspect(arules14b.sorted)
+quality(arules14b.sorted)
+head(inspect(arules14b.sorted))
+
+
+
+# Plotting Rules
+# Visualising
+library(arulesViz)
+plot(arules14b)
+
+plot(arules14b, method="graph", control=list(type="items"))
+
+plot(arules14b, method="paracoord", control=list(reorder=TRUE))
