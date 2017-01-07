@@ -12,6 +12,16 @@ library(data.tree)
 # http://r.789695.n4.nabble.com/Is-there-an-ID3-implementation-in-R-td4696375.html
 
 ## load RWeka 
+
+Sys.setenv(JAVA_HOME='C:\\Program Files\\Java\\jre1.8.0_111\\bin') # for 64-bit version
+
+system("java -version")
+# This is important.. Use rJava Home instead of Windows Home
+if(Sys.getenv("JAVA_HOME")!=""){
+  Sys.setenv(JAVA_HOME="")
+}
+library(rJava)
+library("RWekajars")
 library(RWeka)  # needs rJava
 ## look for a package providing id3 
 WPM("refresh-cache") 
@@ -23,6 +33,13 @@ WPM("load-package", "simpleEducationalLearningSchemes")
 ## make classifier 
 ID3 <- make_Weka_classifier("weka/classifiers/trees/Id3") 
 ## test it out. 
-DF2 <- read.arff(system.file("arff", "contact-lenses.arff", 
-                             package = "RWeka")) 
+DF2 <- read.arff(system.file("arff", "contact-lenses.arff", package = "RWeka")) 
+.jinit(".")
+str(DF2)
 ID3(`contact-lenses` ~ ., data = DF2) 
+
+WPM("load-package", "Decorate") 
+make_Weka_classifier("Decorate") 
+WPM("load-package", "naiveBayesTree")
+
+print(.jclassPath())
