@@ -52,6 +52,7 @@ library(fpc)
 iris2 = iris[-5] # remove class tags
 str(iris2)
 ds = dbscan(iris2, eps=0.42, MinPts = 5)
+ds
 table(ds$cluster,iris$Species)
 # 1 to 3 identified clusters; 0 due to noise
 plot(ds,iris2)
@@ -62,12 +63,16 @@ plotcluster(iris2, ds$cluster)
 # Prediction with Clustering Model
 set.seed(435)
 idx = sample(1:nrow(iris),10)
+idx
 # remove class label
 new.data = iris[idx,-5]
+head(new.data)
 # add random noise
 new.data = new.data + matrix(runif(10*4,min=0,max=0.2),nrow=10,ncol=4)
+head(new.data)
 #label new data
 pred = predict(ds,iris2, new.data)
+pred
 table(pred, iris$Species[idx]) # check cluster labels
 # 3 + 3 + 2 = 8 out of 10 objects assigned with correct classes labels
 plot(iris2[c(1,4)],col=1 + ds$cluster)
